@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Cadastrar responsável</nb-card-header>
+      <nb-card-body>
+        <form>
+          <div class="form-group">
+            <label for="user" class="label">Usuario</label>
+            <input id="user" type="text" nbInput fullWidth placeholder="Usuario" name="Usuario" [(ngModel)]="usuario"
+              (ngModelChange)="onChangeUser($event)">
+          </div>
+
+          <div class="form-group">
+            <label for="name" class="label">Nome</label>
+            <input id="name" type="text" nbInput fullWidth placeholder="Nome" name="Nome" [(ngModel)]="nome">
+          </div>
+
+          <div class="form-group">
+            <label for="name" class="label">Sobrenome</label>
+            <input id="name" type="text" nbInput fullWidth placeholder="Sobrenome" name="Sobrenome" [(ngModel)]="sobrenome">
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="label">Email</label>
+            <input id="email" type="email" nbInput fullWidth placeholder="Email" name="E-mail" [(ngModel)]="email"
+              (ngModelChange)="onChangeEmail($event)">
+          </div>
+
+          <div class="form-group">
+            <label for="contato" class="label">Contato</label>
+            <input mask="(00) 00000-0000" [showMaskTyped]="true" id="contato" type="text" nbInput fullWidth placeholder="Contato" name="contato" [(ngModel)]="contato">
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="label">Senha</label>
+            <input id="password" type="password" nbInput fullWidth placeholder="Senha" name="Senha" [(ngModel)]="senha">
+          </div>
+
+          <button type="submit" nbButton status="primary" (click)="OnClickEnviar()">Enviar</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-6">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Pacientes</nb-card-header>
+      <nb-card-body>
+
+        <div *ngFor="let crianca of res_criancas">
+          <form class="form-inline" *ngIf="crianca.isDelete === '0' || crianca.seted === '0'">
+            <nb-select [selected]="crianca.id" class="col-6" disabled>
+              <nb-option [value]="crianca.id">{{crianca.name}}</nb-option>
+            </nb-select>
+            <button type="button" nbButton status="danger" (click)="OnClickRemove(crianca.id)">-</button>
+          </form>
+        </div>
+
+        <form class="form-inline">
+          <nb-select selected="0" class="col-6" [(ngModel)]="crianca_add" name="criancaAdd">
+            <nb-option value="0">Selecione uma criança</nb-option>
+            <nb-option *ngFor="let crianca of criancas" [value]="crianca.id">{{crianca.name}}</nb-option>
+          </nb-select>
+          <button type="button" nbButton status="primary" (click)="OnClickAdd()">+</button>
+        </form>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }">
+</ngx-loading>

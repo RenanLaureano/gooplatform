@@ -1,0 +1,130 @@
+<nb-card>
+  <nb-tabset fullWidth>
+    <nb-tab tabTitle="Dados do Paciente">
+      <div class="row">
+        <div class="col-md-12 col-lg-6">
+          <nb-card status="info">
+            <nb-card-header>Dados básicos</nb-card-header>
+            <nb-card-body>
+              <div class="header">
+                <div>
+                  <h6>Nome da Criança:</h6>
+                </div>
+
+                <div class="detail">
+                  {{crianca}}
+                </div>
+              </div>
+
+              <div class="header">
+                <div>
+                  <h6>Nome do responsavel:</h6>
+                </div>
+
+                <div class="detail">
+                  {{responsavel}}
+                </div>
+              </div>
+
+              <div class="header">
+                <div>
+                  <h6>E-mail:</h6>
+                </div>
+
+                <div class="detail">
+                  {{email}}
+                </div>
+              </div>
+
+              <div class="header">
+                <div>
+                  <h6>Contato:</h6>
+                </div>
+
+                <div class="detail">
+                  {{contato}}
+                </div>
+              </div>
+            </nb-card-body>
+          </nb-card>
+        </div>
+
+        <div class="col-md-12 col-lg-6">
+          <nb-card status="success">
+            <nb-card-header>
+              Dados médicos
+            </nb-card-header>
+            <nb-card-body>
+              <div class="header">
+                <div>
+                  <h6>Hospital:</h6>
+                </div>
+
+                <div *ngIf="!inEdit" class="detail">
+                  {{hospital || 'Não informado!'}}
+                </div>
+
+                <input *ngIf="inEdit" type="text" nbInput fullWidth placeholder="Hospital" [(ngModel)]="hospital">
+              </div>
+
+              <div class="header">
+                <div>
+                  <h6>Contato:</h6>
+                </div>
+
+                <div *ngIf="!inEdit" class="detail">
+                  {{contatoHospital || 'Não informado!'}}
+                </div>
+
+                <input *ngIf="inEdit" type="text" mask="(00) 0000-0000" [showMaskTyped]="true" id="contato" type="text"
+                  nbInput fullWidth placeholder="Contato" name="contato" [(ngModel)]="contatoHospital">
+              </div>
+
+
+              <div class="header">
+                <div>
+                  <h6>Observações:</h6>
+                </div>
+
+                <div *ngIf="!inEdit" class="detail">
+                  {{observacao || 'Não informado!'}}
+                </div>
+
+                <textarea *ngIf="inEdit" rows="10" nbInput fullWidth shape="round" placeholder="Observações..."
+                  [(ngModel)]="observacao"></textarea>
+              </div>
+
+              <div class="header">
+                <div>
+                  <h6>Detalhes da situação do paciente:</h6>
+                </div>
+
+                <div *ngIf="!inEdit" class="detail">
+                  {{situacao || 'Não informado!'}}
+                </div>
+
+                <textarea *ngIf="inEdit" rows="10" nbInput fullWidth shape="round" placeholder="Situação do paciente..."
+                  [(ngModel)]="situacao"></textarea>
+              </div>
+            </nb-card-body>
+            <nb-card-footer>
+              <button *ngIf="!inEdit" nbButton class="float-right" status="success" (click)="OnClickEdit()">
+                <nb-icon icon="edit-outline" pack="eva"></nb-icon>
+              </button>
+              <button *ngIf="inEdit" nbButton class="float-right" status="success"
+                (click)="OnClickSave()">SALVAR</button>
+            </nb-card-footer>
+          </nb-card>
+        </div>
+      </div>
+    </nb-tab>
+
+    <nb-tab tabTitle="Prescrição Médica">
+      <span>Content #2</span>
+    </nb-tab>
+
+  </nb-tabset>
+</nb-card>
+
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>

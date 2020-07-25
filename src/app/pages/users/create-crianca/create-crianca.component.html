@@ -1,0 +1,29 @@
+<nb-card>
+  <nb-card-header>Cadastrar criança</nb-card-header>
+  <nb-card-body>
+    <form>
+      <div class="form-group">
+        <label for="user" class="label">Usuario</label>
+        <input id="user" type="text" nbInput fullWidth placeholder="Usuario" name="Usuario" [(ngModel)]="usuario" (ngModelChange)="onChangeUser($event)">
+      </div>
+
+      <div class="form-group">
+        <label for="name" class="label">Nome</label>
+        <input id="name" type="text" nbInput fullWidth placeholder="Nome" name="Nome" [(ngModel)]="nome">
+      </div>
+
+      <div class="form-group">
+        <label for="name" class="label">Sobrenome</label>
+        <input id="name" type="text" nbInput fullWidth placeholder="Sobrenome" name="Sobrenome" [(ngModel)]="sobrenome">
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="label">Senha</label>
+        <input id="password" type="password" nbInput fullWidth placeholder="Senha" name="Senha" [(ngModel)]="senha">
+      </div>
+
+      <button type="submit" nbButton status="primary" (click)="OnClickEnviar()">Enviar</button>
+    </form>
+  </nb-card-body>
+</nb-card>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>

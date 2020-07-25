@@ -1,0 +1,13 @@
+<nb-card>
+  <nb-card-header>
+    Crianças
+
+    <button nbButton status="primary" class="float-right" (click)="OnClickAdd()"><nb-icon icon="person-add-outline" pack="eva"></nb-icon></button>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="criancas" (custom)="onCustomAction($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>

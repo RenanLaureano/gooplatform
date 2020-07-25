@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header class="my-header-card-flex">
+
+      Tempo em cada cômodo
+
+      <nb-select selected="0" [(ngModel)]="day" (ngModelChange)="timePerPlace.ChangePie(this.id_crianca,this.day)">
+        <nb-option *ngFor="let d of days" [value]="d.value">{{d.name}}</nb-option>
+      </nb-select>
+
+      </nb-card-header>
+      <nb-card-body>
+        <ngx-time-per-place-pie #timePerPlace [id_crianca]="id_crianca" [day]="day"></ngx-time-per-place-pie>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header class="my-header-card-flex">
+
+      Tempo no jogo
+      </nb-card-header>
+      <nb-card-body>
+        <ngx-played-week-xaxis [id_crianca]="id_crianca"></ngx-played-week-xaxis>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

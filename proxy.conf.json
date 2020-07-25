@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "http://localhost/goo/main.php",
+      "secure": false
+    }
+  }

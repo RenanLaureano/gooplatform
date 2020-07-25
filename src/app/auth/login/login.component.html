@@ -1,0 +1,73 @@
+<!-- Form-->
+<div class="form" [ngClass]="{'open': inRegister}">
+  <div class="form-toggle"></div>
+  <div class="form-panel one" (click)="CloseRegister($event)" [ngClass]="{'active': !inRegister, 'hidden': inRegister}">
+    <div class="form-header">
+      <h1>Account Login</h1>
+    </div>
+    <div class="form-content">
+      <form>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required="required" [(ngModel)]="user"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required="required" [(ngModel)]="password"/>
+        </div>
+        <div class="form-group">
+          <label class="form-remember">
+            <input type="checkbox"/>Remember Me
+          </label><a class="form-recovery" href="#">Forgot Password?</a>
+        </div>
+        <div class="form-group">
+          <button type="submit" (click)="OnClickLogin()">Log In</button>
+        </div>
+        <div class="error error-register">
+          {{error}}
+        </div>
+      </form>
+    </div>
+  </div>
+  <div (click)="OpenRegister()" class="form-panel two" id="form-two" [ngClass]="{'active': inRegister, 'hidden': !inRegister}">
+    <div class="close-button" >
+        <button type="button" (click)="CloseRegister($event)">x</button>
+    </div>
+    <div class="form-header">
+      <h1>Register Account</h1>
+    </div>
+    <div class="form-content">
+      <form>
+        <div class="form-group">
+          <label for="username">Nome</label>
+          <input type="text" name="name" required="required" [(ngModel)]="name_register"/>
+        </div>
+        <div class="form-group">
+          <label for="username">Sobrenome</label>
+          <input type="text" name="name" required="required" [(ngModel)]="sobrenome_register"/>
+        </div>
+        <div class="form-group">
+          <label for="username">Usuario</label>
+          <input type="text" name="username" required="required" [(ngModel)]="user_register" (ngModelChange)="onChangeUser($event)"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" name="password" required="required" [(ngModel)]="password_register"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" required="required" [(ngModel)]="email_register" (ngModelChange)="onChangeEmail($event)"/>
+        </div>
+        <div class="form-group">
+          <button type="submit" (click)="OnClickRegister()">Registrar</button>
+        </div>
+
+        <div class="error">
+          {{error_register}}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
